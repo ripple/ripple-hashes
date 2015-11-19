@@ -1,6 +1,6 @@
 {
   "name": "ripple-hashes",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Compute hashes of Ripple objects",
   "license": "ISC",
   "scripts": {
@@ -22,7 +22,7 @@
     "bignumber.js": "^2.0.3",
     "create-hash": "^1.1.2",
     "ripple-address-codec": "^2.0.1",
-    "ripple-binary-codec": "^0.0.6"
+    "ripple-binary-codec": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "*"
