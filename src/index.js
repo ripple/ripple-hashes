@@ -29,6 +29,10 @@ function bigintToHex(integerString, byteLength) {
   return padLeftZero(hex, byteLength * 2);
 }
 
+function ledgerSpaceHex(name) {
+  return intToHex(ledgerspaces[name].charCodeAt(0), 2);
+}
+
 function addressToHex(address) {
   return (new Buffer(decodeAddress(address))).toString('hex');
 }
@@ -77,8 +81,13 @@ function computeTransactionSigningHash(txJSON) {
 }
 
 function computeAccountHash(address) {
-  var prefix = '00' + intToHex(ledgerspaces.account.charCodeAt(0), 1);
-  return hash(prefix + addressToHex(address));
+  return hash(ledgerSpaceHex('account') + addressToHex(address));
+}
+
+function computeSignerListHash(address) {
+  return hash(ledgerSpaceHex('signerList') +
+              addressToHex(address) +
+              '00000000' /* uint32(0) signer list index */);
 }
 
 function computeOrderHash(address, sequence) {
@@ -95,7 +104,7 @@ function computeTrustlineHash(address1, address2, currency) {
   var lowAddressHex = swap ? address2Hex : address1Hex;
   var highAddressHex = swap ? address1Hex : address2Hex;
 
-  var prefix = '00' + intToHex(ledgerspaces.rippleState.charCodeAt(0), 1);
+  var prefix = ledgerSpaceHex('rippleState');
   return hash(prefix + lowAddressHex + highAddressHex +
               currencyToHex(currency));
 }
@@ -149,6 +158,7 @@ module.exports = {
   computeAccountHash: computeAccountHash,
   computeOrderHash: computeOrderHash,
   computeTrustlineHash: computeTrustlineHash,
+  computeSignerListHash: computeSignerListHash,
   computeStateTreeHash: computeStateTreeHash,
   computeTransactionTreeHash: computeTransactionTreeHash,
   computeLedgerHash: computeLedgerHash

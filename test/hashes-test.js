@@ -92,6 +92,48 @@ describe('Ledger', function() {
       assert.equal(actualEntryHash, expectedEntryHash);
     });
   });
+
+  describe('#computeSignerListHash', function() {
+    /*
+    #!/bin/bash
+
+    #There's no test fixtures anywhere, but this test was verified with this.
+    #Start a rippled standalone server and issue the following commands:
+
+    ./build/rippled submit "masterpassphrase" '
+    {
+        "TransactionType":"SignerListSet",
+        "Account":"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+        "SignerQuorum":1,
+        "SignerEntries":[
+            {
+                "SignerEntry":
+                {
+                    "Account":"rnUy2SHTrB9DubsPmkJZUXTf5FcNDGrYEA",
+                    "SignerWeight":1
+                }
+            },
+            {
+                "SignerEntry":
+                {
+                    "Account":"rPcNzota6B8YBokhYtcTNqQVCngtbnWfux",
+                    "SignerWeight":3
+                }
+            }
+        ]
+    }'
+    ./build/rippled ledger_accept
+
+    # Get signer list information
+    build/rippled account_objects rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh
+    */
+    it('will calculate the SignerList index for r32UufnaCGL82HubijgJGDmdE5hac7ZvLw', function() {
+      var account = 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh';
+      var expectedEntryHash = '778365D5180F5DF3016817D1F318527AD7410D83F8636CF48C43E8AF72AB49BF';
+      var actualEntryHash = hashes.computeSignerListHash(account);
+      assert.equal(actualEntryHash, expectedEntryHash);
+    });
+  });
 });
 
 // vim:sw=2:sts=2:ts=8:et
