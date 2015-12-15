@@ -1,3 +1,4 @@
+
 /**
  * Ripple ledger namespace prefixes.
  *
@@ -10,7 +11,6 @@ module.exports = {
   account        : 'a',
   dirNode        : 'd',
   generatorMap   : 'g',
-  nickname       : 'n',
   rippleState    : 'r',
   offer          : 'o',  // Entry for an offer.
   ownerDir       : 'O',  // Directory of things owned by an account.
@@ -18,5 +18,6 @@ module.exports = {
   contract       : 'c',
   skipList       : 's',
   amendment      : 'f',
-  feeSettings    : 'e'
+  feeSettings    : 'e',
+  signerList     : 'S'
 };
