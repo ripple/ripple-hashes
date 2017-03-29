@@ -134,6 +134,29 @@ describe('Ledger', function() {
       assert.equal(actualEntryHash, expectedEntryHash);
     });
   });
+
+  describe('#calcEscrowEntryHash', function() {
+    it('will calculate the Escrow entry hash for rDx69ebzbowuqztksVDmZXjizTd12BVr4x, sequence 84', function() {
+      var account = 'rDx69ebzbowuqztksVDmZXjizTd12BVr4x';
+      var sequence = 84;
+      var expectedEntryHash = '61E8E8ED53FA2CEBE192B23897071E9A75217BF5A410E9CB5B45AAB7AECA567A';
+      var actualEntryHash = hashes.computeEscrowHash(account, sequence);
+
+      assert.equal(actualEntryHash, expectedEntryHash);
+    });
+  });
+
+  describe('#calcPaymentChannelEntryHash', function() {
+    it('will calculate the PaymentChannel entry hash for rDx69ebzbowuqztksVDmZXjizTd12BVr4x and rLFtVprxUEfsH54eCWKsZrEQzMDsx1wqso, sequence 82', function() {
+      var account = 'rDx69ebzbowuqztksVDmZXjizTd12BVr4x';
+      var dstAccount = 'rLFtVprxUEfsH54eCWKsZrEQzMDsx1wqso'
+      var sequence = 82;
+      var expectedEntryHash = 'E35708503B3C3143FB522D749AAFCC296E8060F0FB371A9A56FAE0B1ED127366';
+      var actualEntryHash = hashes.computePaymentChannelHash(account, dstAccount, sequence);
+
+      assert.equal(actualEntryHash, expectedEntryHash);
+    });
+  });
 });
 
 // vim:sw=2:sts=2:ts=8:et

@@ -19,5 +19,7 @@ module.exports = {
   skipList       : 's',
   amendment      : 'f',
   feeSettings    : 'e',
-  signerList     : 'S'
+  signerList     : 'S',
+  escrow         : 'u',
+  paychan        : 'x'
 };

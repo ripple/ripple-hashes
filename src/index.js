@@ -150,6 +150,16 @@ function computeLedgerHash(ledgerHeader) {
   );
 }
 
+function computeEscrowHash(address, sequence) {
+  return hash(ledgerSpaceHex('escrow') + addressToHex(address) +
+    intToHex(sequence, 4));
+}
+
+function computePaymentChannelHash(address, dstAddress, sequence) {
+  return hash(ledgerSpaceHex('paychan') + addressToHex(address) +
+    addressToHex(dstAddress) + intToHex(sequence, 4));
+}
+
 module.exports = {
   computeTransactionHash: computeTransactionHash,
   computeBinaryTransactionHash: computeBinaryTransactionHash,
@@ -161,5 +171,7 @@ module.exports = {
   computeSignerListHash: computeSignerListHash,
   computeStateTreeHash: computeStateTreeHash,
   computeTransactionTreeHash: computeTransactionTreeHash,
-  computeLedgerHash: computeLedgerHash
+  computeLedgerHash: computeLedgerHash,
+  computeEscrowHash: computeEscrowHash,
+  computePaymentChannelHash: computePaymentChannelHash
 };
