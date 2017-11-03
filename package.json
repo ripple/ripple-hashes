@@ -15,9 +15,6 @@
     "ripple",
     "ripple-hashes"
   ],
-  "engines": {
-    "node": ">=0.12.0"
-  },
   "dependencies": {
     "bignumber.js": "^4.1.0",
     "create-hash": "^1.1.2",
