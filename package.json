@@ -18,8 +18,8 @@
   "dependencies": {
     "bignumber.js": "^4.1.0",
     "create-hash": "^1.1.2",
-    "ripple-address-codec": "^2.0.1",
-    "ripple-binary-codec": "^0.2.3"
+    "ripple-address-codec": "^3.0.4",
+    "ripple-binary-codec": "^0.2.4"
   },
   "devDependencies": {
     "mocha": "^6.2.0"
