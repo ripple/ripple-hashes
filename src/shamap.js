@@ -22,7 +22,7 @@ SHAMapTreeNode.TYPE_TRANSACTION_MD = 3;
 SHAMapTreeNode.TYPE_ACCOUNT_STATE = 4;
 
 function hash(hex) {
-  return sha512half(new Buffer(hex, 'hex'));
+  return sha512half(Buffer.from(hex, 'hex'));
 }
 
 /**

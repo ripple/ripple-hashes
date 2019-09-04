@@ -9,7 +9,7 @@ var ledgerspaces = require('./ledgerspaces');
 var sha512half = require('./sha512half');
 
 function hash(hex) {
-  return sha512half(new Buffer(hex, 'hex'));
+  return sha512half(Buffer.from(hex, 'hex'));
 }
 
 function padLeftZero(string, length) {
@@ -21,7 +21,7 @@ function intToHex(integer, byteLength) {
 }
 
 function bytesToHex(bytes) {
-  return (new Buffer(bytes)).toString('hex');
+  return (Buffer.from(bytes)).toString('hex');
 }
 
 function bigintToHex(integerString, byteLength) {
@@ -34,7 +34,7 @@ function ledgerSpaceHex(name) {
 }
 
 function addressToHex(address) {
-  return (new Buffer(decodeAddress(address))).toString('hex');
+  return (Buffer.from(decodeAddress(address))).toString('hex');
 }
 
 function currencyToHex(currency) {
