@@ -22,6 +22,6 @@
     "ripple-binary-codec": "0.2.1"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "^6.2.0"
   }
 }
