@@ -1,6 +1,6 @@
 {
   "name": "ripple-hashes",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Compute hashes of Ripple objects",
   "license": "ISC",
   "scripts": {
